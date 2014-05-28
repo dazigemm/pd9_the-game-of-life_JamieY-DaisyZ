@@ -1,2 +1,3 @@
 Version 0.00 [May 28, 2014]
 ~Deciding flow of how the game will progress and what will be available to the player(s).
+There will be a MASH.java file that will be the driver file. It will contain the main() method as well as other functions, including a spinner, a toString, various printing methods, user input (to be implemented later on), and other things. Current plans include a Category.java class that will contain an array or arraylist containing the possible choices. The driver method will use a while loop and go through the categories using a counter, removing choices based on the spinner's result. At the end, it will print the results. Statistics will be implemented at a later date.
