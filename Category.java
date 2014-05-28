@@ -24,6 +24,14 @@ public class Category{
 	return retval;
     }
 
+    public String get(int index){
+	return data.get(index);
+    }
+
+    public String peekFirst(){
+	return data.peekFirst();
+    }
+
     public boolean isEmpty(){//This has its uses
 	return size==0;
     }
