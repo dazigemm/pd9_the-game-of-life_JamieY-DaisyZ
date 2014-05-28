@@ -1,0 +1,2 @@
+Version 0.00 [May 28, 2014]
+~Deciding flow of how the game will progress and what will be available to the player(s).
