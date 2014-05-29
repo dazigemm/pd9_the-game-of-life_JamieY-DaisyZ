@@ -15,3 +15,6 @@ There will be a MASH.java file that will be the driver file. It will contain the
 
 Version 0.00a [May 28, 2014]
 Andrew Fan: Added Category.java. May require additional methods. I used a LinkedList as the base because we'll be removing things from the categories very often.
+
+Version 0.00b [May 29, 2014]
+Considered a lot of possibilities. We WILL be using a circularly linked list of sorts (in some way or another) in order to store the data for each option, but the implmentation of the categories may in fact require a completely different approach than the one included in Category.java, which may require scrapping.

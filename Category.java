@@ -1,6 +1,7 @@
 /**********
  * Andrew Fan: This is Category.java, the class containing the basic data for Categories.
  * This class uses an LinkedList to store values because it makes adding and removing less of a pain to deal with.
+ * There is a chance this will just be scrapped and left to gather dust.
  *********/
 import java.util.LinkedList;
 
