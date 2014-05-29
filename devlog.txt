@@ -1,6 +1,14 @@
 NEWER AT BOTTOM
 THE GAME OF LIFE - APCS2 (2014)
 
+May 23, 2014
+FINAL PROJECT TIME! 
+
+May 27, 2014
+We further developed our idea today and then we met with Mr. Brown to discuss our project. Andrew Fan joined the team! Yay!
+Mash: This is a one player game with two versions: Life and Stuy. Players will give outcomes they would like to see and use a spinner to generate a spinner. The computer will run, and then will show the results. 
+Added: We will then take the results and store them for analysis. We will find the least and most common answers for each category. We'll figure out details later. 
+
 Version 0.00 [May 28, 2014]
 ~Deciding flow of how the game will progress and what will be available to the player(s).
 There will be a MASH.java file that will be the driver file. It will contain the main() method as well as other functions, including a spinner, a toString, various printing methods, user input (to be implemented later on), and other things. Current plans include a Category.java class that will contain an array or arraylist containing the possible choices. The driver method will use a while loop and go through the categories using a counter, removing choices based on the spinner's result. At the end, it will print the results. Statistics will be implemented at a later date.
