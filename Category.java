@@ -1,16 +1,15 @@
 /**********
  * Andrew Fan: This is Category.java, the class containing the basic data for Categories.
- * This class uses an LinkedList to store values because it makes adding and removing less of a pain to deal with.
- * There is a chance this will just be scrapped and left to gather dust.
+ * This class uses an ArrayList to store values because it's less mind boggling than a LinkedList, which is more efficient but harder to comprehend becaue there would be a Circularly Linked List of Linked Lists.
  *********/
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 public class Category{
-    private LinkedList<String> data;
+    private ArrayList<String> data;
     private int size;//Important for checking if a category has only one element
 
     public Category(){
-	data = new LinkedList<String>();
+	data = new ArrayList<String>();
 	size = 0;
     }
 
