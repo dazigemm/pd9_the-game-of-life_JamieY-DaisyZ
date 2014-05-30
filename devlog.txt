@@ -22,3 +22,4 @@ Considered a lot of possibilities. We WILL be using a circularly linked list of 
 Version 0.00c [May 30, 2014]
 Andrew Fan: Changes to Category.java.
 We have decided to use the circularly linked list that we built in class. ArrayList<String> will be stored in each node. We will try to get the game working by the middle of the week and start the statistical part then. 
+Andrew Fan: Added heaps for statistics later. They should be functional.
