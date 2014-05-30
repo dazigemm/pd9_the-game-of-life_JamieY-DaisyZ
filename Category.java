@@ -6,21 +6,24 @@ import java.util.ArrayList;
 
 public class Category{
     private ArrayList<String> data;
-    private int size;//Important for checking if a category has only one element
+    private String name;
 
-    public Category(){
+    public Category(){//Avoid
 	data = new ArrayList<String>();
-	size = 0;
+	name = "";
+    }
+
+    public Category(String name){//good constructor
+	data = new ArrayList<String>();
+	this.name = name;
     }
 
     public void add(String s){
 	data.add(s);
-	size++;
     }
 
     public String remove(int index){
 	String retval = data.remove(index);
-	size--;
 	return retval;
     }
 
@@ -28,16 +31,20 @@ public class Category{
 	return data.get(index);
     }
 
+    public String getName(){
+	return name;
+    }
+
     public String peekFirst(){
 	return data.peekFirst();
     }
 
     public boolean isEmpty(){//This has its uses
-	return size==0;
+	return data.isEmpty();
     }
 
     public int getSize(){
-	return size;
+	return data.size();
     }
 
     //Add other required methods here. As long as it works with the project, it is fine.
