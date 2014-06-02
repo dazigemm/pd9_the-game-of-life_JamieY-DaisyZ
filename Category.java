@@ -1,6 +1,6 @@
 /**********
  * Andrew Fan: This is Category.java, the class containing the basic data for Categories.
- * This class uses an ArrayList to store values because it's less mind boggling than a LinkedList, which is more efficient but harder to comprehend becaue there would be a Circularly Linked List of Linked Lists.
+ * This class uses an ArrayList to store values because it's less mind boggling than a LinkedList, which is more efficient but harder to comprehend becaue there would be a Circularly Linked List of Linked Lists. It will function as a DLLNode.
  *********/
 import java.util.ArrayList;
 
