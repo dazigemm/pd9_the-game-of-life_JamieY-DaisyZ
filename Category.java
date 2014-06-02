@@ -5,8 +5,10 @@
 import java.util.ArrayList;
 
 public class Category{
+
     private ArrayList<String> data;
     private String name;
+    private Category _nextNode, _prevNode;
 
     public Category(){//Avoid
 	data = new ArrayList<String>();
@@ -15,11 +17,24 @@ public class Category{
 
     public Category(String name){//good constructor
 	data = new ArrayList<String>();
-	this.name = name;
+	name = name;
+    }
+
+    public Category (String name, String value, Category prev, Category nxt) {
+	this(name);
+	_nextNode = nxt;
+	_prevNode = prev;
+	add(value);
     }
 
     public void add(String s){
 	data.add(s);
+    }
+
+    public Category setNext ( Category newNext ) {
+	Category prev = _nextNode;
+	_nextNode = newNext;
+	return prev;
     }
 
     public String remove(int index){
@@ -27,7 +42,8 @@ public class Category{
 	return retval;
     }
 
-    public String get(int index){
+    //ACCESSORS
+    public String getValue(int index){
 	return data.get(index);
     }
 
@@ -35,17 +51,18 @@ public class Category{
 	return name;
     }
 
-    public String peekFirst(){
-	return data.peekFirst();
+    public Category getNext() { return _nextNode; }
+    public Category getPrev() { return _prevNode; }
+
+    public int getSize(){
+	return data.size();
     }
 
     public boolean isEmpty(){//This has its uses
 	return data.isEmpty();
     }
 
-    public int getSize(){
-	return data.size();
-    }
+
 
     //Add other required methods here. As long as it works with the project, it is fine.
 

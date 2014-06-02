@@ -26,3 +26,5 @@ Andrew Fan: Added heaps for statistics later. They should be functional.
 
 Version 0.00d [Jun 2, 2014]
 Andrew Fan: Driver skeleton with almost nothing in it added
+
+Tried to combine DLLNode & Category since they should be the same class...But DLLNode has the extra function of being able to access its previous node which we will not be using. 
