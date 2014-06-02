@@ -33,6 +33,11 @@ public class MASH{
 	return spinnernum;
     }
 
+    public int gameSelect(){//Stuy or Life. 
+	Scanner scan = new Scanner(System.io);
+	//Do stuff.
+	return 0; //Default value, will be 0 for STUY and 1 for LIFE
+    }
 
     public static void main(String[] args){
 	MASH game = new MASH();
