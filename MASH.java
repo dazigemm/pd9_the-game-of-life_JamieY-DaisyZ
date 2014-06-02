@@ -11,6 +11,8 @@ public class MASH{
     private int index;//Counter within ArrayLists. Resets when done.
     private Random rand;
 
+
+
     //Constructors
     public MASH(){
 	spinnernum = 0; //Will be changed in stuff
@@ -23,6 +25,7 @@ public class MASH{
     //Methods
     public void game(){//The game
 	//Player selects which game to run, STUY or LIFE.
+	int version = gameSelect();// 0 for Stuy and 1 for Life
 
 	//Stuff
 	spinner();//Changes the spinnernum, doesn't need to use the return val.
@@ -34,8 +37,15 @@ public class MASH{
     }
 
     public int gameSelect(){//Stuy or Life. 
-	Scanner scan = new Scanner(System.io);
-	//Do stuff.
+	Scanner scan = new Scanner(System.in);
+	System.out.println("What do you want to play?");
+	String userinput = scan.nextLine();
+
+	if (userinput.equals("LIFE") ||
+	    userinput.equals("life") ||
+	    userinput.equals("Life"))
+	    return 1; 
+
 	return 0; //Default value, will be 0 for STUY and 1 for LIFE
     }
 
