@@ -26,9 +26,16 @@ public class MASH{
     public void game(){//The game
 	//Player selects which game to run, STUY or LIFE.
 	int version = gameSelect();// 0 for Stuy and 1 for Life
+	if (version == 0){// Stuy Version
+	    // Category creation
+	}
+	else {//Life Version
+	    //Category creation
+	}
 
 	//Stuff
 	spinner();//Changes the spinnernum, doesn't need to use the return val.
+	//Insert While loops running the game here
     }
 
     public int spinner(){
