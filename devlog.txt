@@ -30,3 +30,11 @@ Andrew Fan: Driver skeleton with almost nothing in it added
 Tried to combine DLLNode & Category since they should be the same class...But DLLNode has the extra function of being able to access its previous node which we will not be using. 
 
 Andrew and Jamie: Fixed up part of the user selection portion of the gameSelect and formed a basic structure for things to work inside the driver, MASH.java, while the Category class is renovated.
+
+Version 0.00e [Jun 3, 2014]
+Andrew and Jamie: Continued to build the setup of the game. 
+Daisy: Continued working on Category.
+WE CAN DO THIS!!!
+
+
+
