@@ -10,13 +10,16 @@ public class Category{
     private String name;
     private Category _nextNode, _prevNode;
 
+    // Constructors... too many
     public Category(){//Avoid
 	data = new ArrayList<String>();
+	_prevNode = _nextNode = null;
 	name = "";
     }
 
     public Category(String name){//good constructor
 	data = new ArrayList<String>();
+	_prevNode = _nextNode = null;
 	name = name;
     }
 
@@ -25,13 +28,21 @@ public class Category{
 	_nextNode = nxt;
 	_prevNode = prev;
     }
-    public Category (String name, String value, Category prev, Category nxt) {
+    public Category (String name, ArrayList<String> input, Category prev, Category nxt) {
 	this(name, prev, nxt);
-	add(value);
+	data = input;
     }
 
     public void add(String s){
 	data.add(s);
+    }
+
+    // ********** Mutators *********
+
+    public ArrayList<String> setData (ArrayList<String> input) {
+	ArrayList<String> tmp  = data;
+	data = input;
+	return tmp;
     }
 
     public String setName (String newName) {
