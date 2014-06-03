@@ -20,10 +20,13 @@ public class Category{
 	name = name;
     }
 
-    public Category (String name, String value, Category prev, Category nxt) {
+    public Category (String name, Category prev, Category nxt) {
 	this(name);
 	_nextNode = nxt;
 	_prevNode = prev;
+    }
+    public Category (String name, String value, Category prev, Category nxt) {
+	this(name, prev, nxt);
 	add(value);
     }
 
@@ -31,12 +34,23 @@ public class Category{
 	data.add(s);
     }
 
-    public Category setNext ( Category newNext ) {
-	Category prev = _nextNode;
-	_nextNode = newNext;
-	return prev;
+    public String setName (String newName) {
+	String tmp = name;
+	name = newName;
+	return tmp;
     }
 
+    public Category setNext ( Category newNext ) {
+	Category tmp = _nextNode;
+	_nextNode = newNext;
+	return tmp;
+    }
+
+    public Category setPrev ( Category newPrev ) {
+	Category tmp = _prevNode;
+	_prevNode = newPrev;
+	return tmp;
+    }
     public String remove(int index){
 	String retval = data.remove(index);
 	return retval;
