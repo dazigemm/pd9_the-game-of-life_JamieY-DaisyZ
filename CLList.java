@@ -104,6 +104,8 @@ public class CLList {
 
 	liz.set(0, p);
 
+	liz.add("pet");
+	liz.get(1).add("dog");
 	System.out.println(liz);
 
 	System.out.println("\ntesting get()...");
