@@ -33,7 +33,7 @@ Andrew and Jamie: Fixed up part of the user selection portion of the gameSelect 
 
 Version 0.00e [Jun 3, 2014]
 Andrew and Jamie: Continued to build the setup of the game. 
-Daisy: Continued working on Category.
+Daisy: Continued working on Category. Has gotten CLList to compile when DLLNode is replaced with Category. 
 WE CAN DO THIS!!!
 
 

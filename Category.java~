@@ -28,7 +28,6 @@ public class Category{
 	_nextNode = nxt;
 	_prevNode = prev;
     }
-
     public Category (String name, ArrayList<String> input, Category prev, Category nxt) {
 	this(name, prev, nxt);
 	data = input;

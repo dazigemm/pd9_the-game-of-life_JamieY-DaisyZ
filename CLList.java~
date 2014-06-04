@@ -2,12 +2,12 @@
  * class CLList 
  * implements a circularly-linked list of doubly-linked nodes
  ******************************************************/
-import java.util.ArrayList;
-public class CLList {
+
+public class CLList<T> {
 
     // only 1 head/tail/front/end pointer is necessary,
     // since the list is circularly-linked
-    private Category _head;
+    private DLLNode<T> _head;
     private int _size = 0;
 
     public CLList() {
@@ -17,19 +17,18 @@ public class CLList {
 
     public int size() { return _size; }
 
-    //adds a new category named x, with an empty arraylist
-    public boolean add( String x ) {
+    public boolean add( T x ) {
 
 	if ( size() == 0 ) {
-	    _head = new Category( x, null, null );
+	    _head = new DLLNode<T>( x, null, null );
 	    _head.setNext( _head );
 	    _head.setPrev( _head );
 	}
 	else {
-	    Category oldLast = _head.getPrev();
+	    DLLNode<T> oldLast = _head.getPrev();
 
 	    // insert new node between head and oldLast
-	    _head.setPrev( new Category( x, oldLast, _head) );
+	    _head.setPrev( new DLLNode<T>( x, oldLast, _head) );
 	    oldLast.setNext( _head.getPrev() );
         }
 	_size++;
@@ -37,38 +36,27 @@ public class CLList {
 	return true;
     }
 
-    //gets the category/node at the index
-    public Category get( int index ) {
 
-	Category tmp = _head;
+    public T get( int index ) {
+
+	DLLNode<T> tmp = _head;
 
 	for( int i = 0; i < index % size(); i++ )
 	    tmp = tmp.getNext();
 
-	return tmp;
+	return tmp.getValue();
     }
 
-    //gets the node and returns the value at index index in its arrayList
-    public String get (int n, int index) {
-	Category tmp = _head;
+
+    public T set( int index, T newVal ) {
+
+	T foo;
+	DLLNode<T> tmp = _head;
 
 	for( int i = 0; i < index % size(); i++ )
 	    tmp = tmp.getNext();
 
-	return tmp.getValue(index);
-    }
-
-    //originally set cargo in dllnode
-    //now sets data of category at index to newVal and returns oldVal (foo)
-    public ArrayList<String> set( int index, ArrayList<String> newVal ) {
-
-	ArrayList<String> foo;
-	Category tmp = _head;
-
-	for( int i = 0; i < index % size(); i++ )
-	    tmp = tmp.getNext();
-
-	foo = tmp.setData( newVal );
+	foo = tmp.setValue( newVal );
 	
 	return foo;
     }
@@ -76,9 +64,9 @@ public class CLList {
 
     public String toString() {
 	String foo = "HEAD-> ";
-	Category tmp = _head;
+	DLLNode<T> tmp = _head;
 	for( int i = 0; i < _size; i++ ) {
-	    foo += tmp + " <-> ";
+	    foo += tmp.getValue() + " <-> ";
 	    tmp = tmp.getNext();
 	}
 	if ( foo.length() > 7 )
@@ -90,19 +78,11 @@ public class CLList {
 
     public static void main( String[] args ) {
 
-	CLList liz = new CLList();
-	/*
+	CLList<String> liz = new CLList<String>();
+
 	liz.add("kenneth");
 	liz.add("jack");
 	liz.add("tracy");
-	*/
-	liz.add("partner"); // added partner category
-	ArrayList<String> p = new ArrayList<String>();
-	p.add("kenneth");
-	p.add("jack");
-	p.add("tracy");
-
-	liz.set(0, p);
 
 	System.out.println(liz);
 
@@ -111,13 +91,13 @@ public class CLList {
 	    System.out.println("node " + i + " contains " + liz.get(i) );
 	    System.out.println(liz);
 	}
-	/*
+
 	System.out.println("\ntesting set()...");
 	for( int i = 0; i < liz._size; i++ ) {
 	    System.out.println( liz.set( i, "rock"+i ) );
 	    System.out.println(liz);
 	}
-	*/
+
     }//end main
 
 }//end class CLList
