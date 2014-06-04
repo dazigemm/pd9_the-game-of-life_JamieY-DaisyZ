@@ -23,8 +23,9 @@ public class Category{
 	name = name;
     }
 
-    public Category (String name, Category prev, Category nxt) {
-	this(name);
+    public Category (String n, Category prev, Category nxt) {
+	name = n;
+	data = new ArrayList<String>();
 	_nextNode = nxt;
 	_prevNode = prev;
     }
@@ -93,7 +94,7 @@ public class Category{
     //Add other required methods here. As long as it works with the project, it is fine.
 
     public String toString(){
-	return data.toString();
+	return name + ": " + data.toString();
     }
 
 }
