@@ -36,59 +36,38 @@ public class MASH{
 	//Player selects which game to run, STUY or LIFE.
 	int version = gameSelect();// 0 for Stuy and 1 for Life
 
+	//The following code creates the CLList containing the Categories.
+	//A new ArrayList is made containing the hardcoded non-variable MASH
+	//After that, categories are added and the data set to them is input by user via CreateAL and a constant that determines which print statement to use
+
 	CLList gamelist = new CLList();
-	ArrayList MASHAL = new ArrayList();//MASH must be hardcoded
+	ArrayList<String> MASHAL = new ArrayList<String>();//MASH must be hardcoded
 	MASHAL.add("MANSION"); MASHAL.add("APARTMENT"); 
 	MASHAL.add("STREET"); MASHAL.add("HOUSE");
-	gamelist.set(0, MASHAL);//The first category added is MASH.
+	gamelist.add("MASH");//Create the first category
+	gamelist.set(0, MASHAL);//The first category added is MASH. Setting data.
 	
 	if (version == 0){// Stuy Version
-
 	    // Creating the ArrayList of data for each Category in CLList
-	    for (int i = 0 ; i < 6; i++){
-		switch(i) {
-		case 0: gamelist.set(1, CreateAL(6));
-		    break;
-		case 1: gamelist.set(2, CreateAL(7));
-		    break;
-		case 2: gamelist.set(3, CreateAL(8));
-		    break;
-		case 3: gamelist.set(4, CreateAL(9));
-		    break;
-		case 4: gamelist.set(5, CreateAL(10));
-		    break;
-		case 5: gamelist.set(6, CreateAL(11));
-		    break;
-		default: System.out.println ("Creating Category Error");
-		    break;
-		}
-	    }
+	    gamelist.add("Job"); gamelist.set(1, CreateAL(6));
+	    gamelist.add("RetAge"); gamelist.set(2, CreateAL(7));
+	    gamelist.add("LivLoc"); gamelist.set(3, CreateAL(8));
+	    gamelist.add("Pet"); gamelist.set(4, CreateAL(9));
+	    gamelist.add("Salary"); gamelist.set(5, CreateAL(10));
+	    gamelist.add("NumKids"); gamelist.set(6, CreateAL(11));
 	}
 	else {//Life Version
 	    // Creating the ArrayList of data for each Category in CLList
-	    for (int i = 0 ; i < 6; i++){//For each category
-		switch(i) {
-		case 0: gamelist.set(1, CreateAL(0));
-		    break;
-		case 1: gamelist.set(2, CreateAL(1));
-		    break;
-		case 2: gamelist.set(3, CreateAL(2));
-		    break;
-		case 3: gamelist.set(4, CreateAL(3));
-		    break;
-		case 4: gamelist.set(5, CreateAL(4));
-		    break;
-		case 5: gamelist.set(6, CreateAL(5));
-		    break;
-		default: System.out.println ("Creating Category Error");
-		    break;
-		}
-       	
-	    }
+	    gamelist.add("GPA"); gamelist.set(1, CreateAL(0));
+	    gamelist.add("Teacher"); gamelist.set(2, CreateAL(1));
+	    gamelist.add("LockerFlr"); gamelist.set(3, CreateAL(2));
+	    gamelist.add("LunchPd"); gamelist.set(4, CreateAL(3));
+	    gamelist.add("College"); gamelist.set(5, CreateAL(4));
+	    gamelist.add("NumFrees"); gamelist.set(6, CreateAL(5));
 	}
 	
+	//Now that the linked list of categories is prepared... 
 		
-	//Stuff
 	spinner();//Changes the spinnernum, doesn't need to use the return val.
 	//Insert While loops running the game here
     }
@@ -112,14 +91,14 @@ public class MASH{
     }
 
     //User creates the choices that will be put into each category.
-    //The category will set its data to the AList returned by this method.
+    //The CLList will create a category with its data set to the AList returned by this method.
     public ArrayList<String> CreateAL(int constant){//constant determines the print statement
 	final int JOB_C = 0;
 	final int RETAGE_C = 1;
 	ArrayList<String> returnAL = new ArrayList<String>();//to return
 	Scanner miniscanner = new Scanner(System.in);
 
-	loop(3){//Three things per Array List
+	for(int i=0;i<3;i++){//Three things per Array List
 	    switch(constant){//0-5 are life, 6-11 are Stuy
 	    case 0: System.out.println("Type in a new selection for Job");
 		break;

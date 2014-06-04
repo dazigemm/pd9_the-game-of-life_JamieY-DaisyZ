@@ -36,5 +36,5 @@ Andrew and Jamie: Continued to build the setup of the game.
 Daisy: Continued working on Category. Has gotten CLList to compile when DLLNode is replaced with Category. 
 WE CAN DO THIS!!!
 
-
-
+Version 0.00f [Jun 4, 2014]
+Using Daisy's CLList edits, Jamie and Andrew wrote the code to create the CLList and add the user-selected choices to the categories. Compiled, but we don't know if it works...
