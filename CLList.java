@@ -89,7 +89,7 @@ public class CLList {
     }
 
     //checks if there is only 1 thing in each category
-    public boolean one () {
+    public boolean isThereOne () {
 	
 	for (int i = 0; i < _size; i++) {
 	    if (get(i).getSize() != 1) 
@@ -136,22 +136,29 @@ public class CLList {
 
 	System.out.println("Spinning...");
 
-	int spun = 3;
+	int spun = 2;
 	int counter = 1;//num nodes passed
 	int node = 0;
 	int index = 0; 
-	while (! Categories.one() ) {
-	   
+	while (! Categories.isThereOne() ) {
+	    int catSize = Categories.get(node).getSize();
+	   	if (catSize == 1 
+		    || index >= catSize) {
+		   
+		    node++;
+		    index = 0;
+		}
 	    if (counter % spun == 0) {
-int catSize = Categories.get(node).getSize();
-	    if (catSize == 1 
-		|| index >= catSize) {
-		index = 0;
-		node++;
-	    }
+		
+		if (catSize == 1 
+		    || index >= catSize) {
+		   
+		    node++;
+		    index = 0;
+		}
 		String removed = Categories.remove(node, index);
 		System.out.println( removed + 
-				   " is not in your future" );
+				    " is not in your future" + Categories.get(node).getName());
 	    }
 	    counter++;
 	    index++;
