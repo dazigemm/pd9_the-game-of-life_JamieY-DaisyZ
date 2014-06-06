@@ -43,5 +43,5 @@ Version 0.00g [Jun 5, 2014]
 played around with CLList, and might have created a working version of MASH (in the main method, which is the wrong place to put it). It needs to be formatted correctly and turned into methods.
 Further testing is necessary. There's something weird about the counting. Or maybe I just can't count?
 Looked up how to get user input through the following website:
-can't post the link right now b/c my internet has decided to stop working, it was a stack overflow post though
+http://stackoverflow.com/questions/4644415/java-how-to-get-input-from-system-console
 Don't really understand the how and why behind this though. 
