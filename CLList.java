@@ -3,6 +3,8 @@
  * implements a circularly-linked list of doubly-linked nodes
  ******************************************************/
 import java.util.ArrayList;
+import java.io.*;
+
 public class CLList {
 
     // only 1 head/tail/front/end pointer is necessary,
@@ -73,9 +75,8 @@ public class CLList {
 	return foo;
     }
 
-
     public String toString() {
-	String foo = "HEAD-> ";
+	String foo = "";//HEAD-> ";
 	Category tmp = _head;
 	for( int i = 0; i < _size; i++ ) {
 	    foo += tmp + " <-> ";
@@ -83,19 +84,94 @@ public class CLList {
 	}
 	if ( foo.length() > 7 )
 	    foo = foo.substring( 0, foo.length() - 5 );
-	foo += " <--...back to HEAD";
+	//foo += " <--...back to HEAD";
 	return foo;
     }
 
+    //checks if there is only 1 thing in each category
+    public boolean one () {
+	
+	for (int i = 0; i < _size; i++) {
+	    if (get(i).getSize() != 1) 
+		return false;
+	}
 
-    public static void main( String[] args ) {
+	return true;
+    }
 
-	CLList liz = new CLList();
+    public String remove (int node, int index) {
+	return get(node).remove(index);
+    }
+
+    public static void main( String[] args ) throws IOException{
+
+	BufferedReader reader =
+	    new BufferedReader(new InputStreamReader(System.in));
+
+	CLList Categories = new CLList();
+	Categories.add("spouse");
+	Categories.add("job");
+	Categories.add("number of kids");
+	Categories.add("salary");
+	Categories.add("retirement age");
+	Categories.add("living location");
+
+	for (int i = 0; i < Categories.size(); i++) {
+	    System.out.println("Fill in your choices for " + 
+			       Categories.get(i).getName());
+
+	    ArrayList<String> arr = new ArrayList<String>();
+	    for (int a = 0; a < 3; a++) {
+		
+		System.out.print(a + 1 + " : ");
+		String input = reader.readLine();
+		arr.add(input);
+		
+	    }
+	    Categories.set(i, arr);
+	}
+
+	System.out.println(Categories);
+	//System.out.println(Categories.get(7));
+
+	System.out.println("Spinning...");
+
+	int spun = 3;
+	int counter = 1;//num nodes passed
+	int node = 0;
+	int index = 0; 
+	while (! Categories.one() ) {
+	   
+	    if (counter % spun == 0) {
+int catSize = Categories.get(node).getSize();
+	    if (catSize == 1 
+		|| index >= catSize) {
+		index = 0;
+		node++;
+	    }
+		String removed = Categories.remove(node, index);
+		System.out.println( removed + 
+				   " is not in your future" );
+	    }
+	    counter++;
+	    index++;
+	    //System.out.println(Categories);
+	}
+	System.out.println(Categories);
+
+	String results = "";
+	for (int i = 0; i < Categories.size(); i++) {
+	    results += Categories.get(i).getValue(0) + ",";
+	}
+	results = results.substring(0, results.length() - 1);
+	System.out.println(results);//should be stored in text file
 	/*
+	CLList liz = new CLList();
+	
 	liz.add("kenneth");
 	liz.add("jack");
 	liz.add("tracy");
-	*/
+	
 	liz.add("partner"); // added partner category
 	ArrayList<String> p = new ArrayList<String>();
 	p.add("kenneth");
