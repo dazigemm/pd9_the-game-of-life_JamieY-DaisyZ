@@ -2,7 +2,7 @@
  * class CLList 
  * implements a circularly-linked list of doubly-linked nodes
  ******************************************************/
-import java.util.ArrayList;
+import java.util.*;
 import java.io.*;
 
 public class CLList {
@@ -52,12 +52,14 @@ public class CLList {
 
     //gets the node and returns the value at index index in its arrayList
     public String get (int n, int index) {
+	return get(n).getValue(index);
+	/*
 	Category tmp = _head;
 
 	for( int i = 0; i < index % size(); i++ )
 	    tmp = tmp.getNext();
 
-	return tmp.getValue(index);
+	    return tmp.getValue(index);*/
     }
 
     //originally set cargo in dllnode
@@ -103,6 +105,10 @@ public class CLList {
 	return get(node).remove(index);
     }
 
+    public int ALSize (int node){
+	return get(node).getSize();
+    }
+
     public static void main( String[] args ) throws IOException{
 
 	BufferedReader reader =
@@ -135,29 +141,32 @@ public class CLList {
 	//System.out.println(Categories.get(7));
 
 	System.out.println("Spinning...");
-
-	int spun = 3;
+	Random r = new Random();
+	int spun = r.nextInt(10);
+	System.out.println("Spinning by " + spun);
 	int counter = 1;//num nodes passed
 	int node = 0;
 	int index = 0; 
+	int catSize = 0;
 	while (! Categories.isThereOne() ) {
-	    int catSize = Categories.get(node).getSize();
-	    if (catSize == 1 
-		|| index >= catSize) {
-		   
+	    catSize = Categories.ALSize(node);
+	    if (catSize == 1 || index >= catSize) {		   
 		node++;
 		index = 0;
 	    }
-	    else { if (counter % spun == 0) {
+	    else {
+		System.out.println ( "looking at: "+ Categories.get(node, index));
+		if (counter % spun == 0) {
+		    String removed = Categories.remove(node, index);
+		    System.out.println( removed + " is not in your " 
+					+ Categories.get(node).getName() + " future!");
+		    catSize = Categories.ALSize(node);
+		    index--;
+		}
 		
-	        
-		String removed = Categories.remove(node, index);
-		System.out.println( removed + 
-				    " is not in your future" + Categories.get(node).getName());
+		counter++;
+		index++;
 	    }
-	    
-	    counter++;
-	    index++;}
 	    //System.out.println(Categories);
 	}
 	System.out.println(Categories);
