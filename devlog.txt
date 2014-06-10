@@ -48,3 +48,6 @@ Don't really understand the how and why behind this though.
 
 Version 0.00h [Jun 9, 2014]
 continued testing by using CLList. Tried if else statements...still not too sure about the counting
+
+Version 0.01 [Jun 10, 2014]
+After days and days of staring at semi working code, Daisy and I have discovered the magic codes that make this project (kinda) works!!!!!! There was a lot of sweat and tears, mostly on my part. YAYYYYYYYY!!!!!!!!!! WE GOT THIS.
