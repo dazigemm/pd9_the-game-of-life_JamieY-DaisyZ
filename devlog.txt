@@ -45,3 +45,6 @@ Further testing is necessary. There's something weird about the counting. Or may
 Looked up how to get user input through the following website:
 http://stackoverflow.com/questions/4644415/java-how-to-get-input-from-system-console
 Don't really understand the how and why behind this though. 
+
+Version 0.00h [Jun 9, 2014]
+continued testing by using CLList. Tried if else statements...still not too sure about the counting

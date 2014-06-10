@@ -136,32 +136,28 @@ public class CLList {
 
 	System.out.println("Spinning...");
 
-	int spun = 2;
+	int spun = 3;
 	int counter = 1;//num nodes passed
 	int node = 0;
 	int index = 0; 
 	while (! Categories.isThereOne() ) {
 	    int catSize = Categories.get(node).getSize();
-	   	if (catSize == 1 
-		    || index >= catSize) {
+	    if (catSize == 1 
+		|| index >= catSize) {
 		   
-		    node++;
-		    index = 0;
-		}
-	    if (counter % spun == 0) {
+		node++;
+		index = 0;
+	    }
+	    else { if (counter % spun == 0) {
 		
-		if (catSize == 1 
-		    || index >= catSize) {
-		   
-		    node++;
-		    index = 0;
-		}
+	        
 		String removed = Categories.remove(node, index);
 		System.out.println( removed + 
 				    " is not in your future" + Categories.get(node).getName());
 	    }
+	    
 	    counter++;
-	    index++;
+	    index++;}
 	    //System.out.println(Categories);
 	}
 	System.out.println(Categories);
