@@ -4,8 +4,11 @@
 
 public class Statistics{
 
-    public Statistics(){//Constructor
+    private ALMinHeap minheap;
+    private ALMaxHeap maxheap;
 
+    public Statistics(){//Constructor
+	
     }
 
 }
