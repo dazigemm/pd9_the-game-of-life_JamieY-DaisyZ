@@ -4,12 +4,8 @@
 
 public class Statistics{
 
-    private ALMinHeap minheap;
-    private ALMaxHeap maxheap;
-
     public Statistics(){//Constructor
-	minheap = new ALMinHeap();
-	maxheap = new ALMaxHeap();
+
     }
 
     //Creates a String ArrayList from a column of text data. 
@@ -46,5 +42,19 @@ public class Statistics{
     }
 
     //MEDIAN FUNCTIONS
+    //REQUIRES A HEAPSORT OR OTHER SORTING ALGORITHM
+
+
+    public static ArrayList<Integer> heapsort(ArrayList<Integer> data){//untested Heap Sort.
+	ArrayList<Integer> returnArr = new ArrayList<Integer>(data.size());
+	ALMinHeap heapity = new ALMinHeap();
+	for(int i = 0; i<data.size(); i++){
+	    heapity.add(data.get(i));
+	}
+	for(int i = 0; i<data.size; i++){
+	    returnArr.set(i, heapity.removeMin());
+	}
+	return returnArr;
+    }
 
 }
