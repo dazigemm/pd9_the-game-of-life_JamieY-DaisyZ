@@ -43,7 +43,27 @@ public class Statistics{
 
     //MEDIAN FUNCTIONS
     //REQUIRES A HEAPSORT OR OTHER SORTING ALGORITHM
+    public double getMedian(int[] data){//INCOMPLETE.
+	int[] tempdata = Arrays.sort(data);
+	int datalength = tempdata.length;
+	if(datalength%2==1){
+	   
+	}else{
+	   
+	}
+	return 0;
+    }
 
+    public double getMedian(ArrayList<Integer> data){//incomplete
+	ArrayList<Integer> tempdata = heapsort(data);
+	int datalength = tempdata.size();
+	if(datalength%2==1){
+
+	}else{
+
+	}
+	return 0;
+    }
 
     public static ArrayList<Integer> heapsort(ArrayList<Integer> data){//untested Heap Sort.
 	ArrayList<Integer> returnArr = new ArrayList<Integer>(data.size());
