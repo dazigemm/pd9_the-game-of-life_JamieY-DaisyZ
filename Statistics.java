@@ -54,20 +54,19 @@ public class Statistics{
     //MEDIAN FUNCTIONS
     //REQUIRES A HEAPSORT OR OTHER SORTING ALGORITHM
     //TYPECASTING TO INT TRUNCATES
-    public double getMedian(int[] data){//INCOMPLETE.
+    public double getMedian(int[] data){//WORKING CORRECTLY
 	if(data.length==0){return -1;}
 	if(data.length==1){return data[0];}
 	int[] tempdata = heapsort(data);
 	int datalength = tempdata.length;
 	if(datalength%2==1){
-	    return data[(int)(data.length/2)];
+	    return tempdata[(int)(datalength/2)];
 	}else{
-	    
+	    return tempdata[(int)(datalength/2)]+tempdata[(int)(datalength/2)-1];
 	}
-	return 0;
     }
 
-    public double getMedian(ArrayList<Integer> data){//incomplete
+    public double getMedian(ArrayList<Integer> data){//incomplete. NOT WORKING CORRECTLY
 	if(data.size()==0){return -1;}
 	if(data.size()==1){return data.get(0);}
 	ArrayList<Integer> tempdata = heapsort(data);
