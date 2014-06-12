@@ -10,16 +10,17 @@ public class Statistics{
     }
 
     //Creates a String ArrayList from a column of text data. 
-    public ArrayList<String> createAListStrFromFile(int column){
+    public ArrayList<String> createAListStrFromFile(int column){//INCOMPLETE
 	return null;
     }
 
     //Creates an Integer ArrayList from a column of text data.
-    public ArrayList<Integer> createAListIntFromFile(int column){
+    public ArrayList<Integer> createAListIntFromFile(int column){//INCOMPLETE
 	return null;
     }
 
-    public void printStatsInt(int[] data){
+    public void printStatsInt(int[] data){//Do this before ArrayList version
+	System.out.println("Dataset size:" + data.length());
 	System.out.println("Median:" + getMedian(data));
 	System.out.println("Mean:" + getMean(data));
     }
@@ -66,18 +67,19 @@ public class Statistics{
 	}
     }
 
-    public double getMedian(ArrayList<Integer> data){//incomplete. NOT WORKING CORRECTLY
+    public double getMedian(ArrayList<Integer> data){//Maybe WORKING CORRECTLY
 	if(data.size()==0){return -1;}
 	if(data.size()==1){return data.get(0);}
 	ArrayList<Integer> tempdata = heapsort(data);
 	int datalength = tempdata.size();
 	if(datalength%2==1){
-
+	    return tempdata.get((int)(datalength/2));
 	}else{
-
+	    return tempdata.get((int)(datalength/2))+tempdata.get((int)(datalength/2)-1);
 	}
-	return 0;
     }
+
+    //ACCESSORY FUNCTIONS
 
     public ArrayList<Integer> heapsort(ArrayList<Integer> data){
 	ArrayList<Integer> returnArr = new ArrayList<Integer>(data.size());
