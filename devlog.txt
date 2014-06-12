@@ -54,3 +54,7 @@ Jamie: After days and days of staring at semi working code, Daisy and I have dis
 
 Version 0.01a [Jun 11, 2014]
 Andrew: Work has progressed on the Statistics end (not really). I also forked but then realized that since there's a shared devlog, it's better to just push and pull to the same repo. Still need to test my heapsort and add in median and mode capabilities for integers. Statistics will use an ArrayList, although some of the functions will be applicable to arrays as well.
+
+Version 0.01b [Jun 12, 2014]
+Andrew: Statistics fixes, etc.
+Jamie: Thread.sleep implementation, major improvements to MASH.java with much help from Daisy
