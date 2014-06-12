@@ -109,7 +109,7 @@ public class CLList {
 	return get(node).getSize();
     }
 
-    public static void main( String[] args ) throws IOException{
+    public static void main( String[] args ) throws IOException,InterruptedException{
 
 	BufferedReader reader =
 	    new BufferedReader(new InputStreamReader(System.in));
@@ -142,7 +142,7 @@ public class CLList {
 
 	System.out.println("Spinning...");
 	Random r = new Random();
-	int spun = r.nextInt(10);
+	int spun = r.nextInt(8) + 2;
 	System.out.println("Spinning by " + spun);
 	int counter = 1;//num nodes passed
 	int node = 0;
@@ -162,6 +162,7 @@ public class CLList {
 					+ Categories.get(node).getName() + " future!");
 		    catSize = Categories.ALSize(node);
 		    index--;
+		    Thread.sleep(1000);
 		}
 		
 		counter++;
