@@ -12,7 +12,7 @@ public class MASH{
     private int index;//Counter within ArrayLists. Resets when done.
     private Random rand;
     private CLList Categories;
-
+    private int version;
     //Constructors
     public MASH(){
 	spinnernum = 0; //Will be changed in stuff
@@ -21,6 +21,7 @@ public class MASH{
 	index = 0;
 	Categories  = new CLList();
 	rand = new Random();
+	version = 0;
     }
 
     /***Categories
@@ -47,32 +48,33 @@ public class MASH{
 	
 	if (userinput.equals("LIFE") ||
 	    userinput.equals("life") ||
-	    userinput.equals("Life"))
+	    userinput.equals("Life")) 
 	    return 1; 
 	
 	return 0; //Default value, will be 0 for STUY and 1 for LIFE
     }
     //Builds the structure of the game. 
-    public void game() throws IOException {//The game
+    public void buildingGame() throws IOException {//The game
 
 	Scanner reader = new Scanner(System.in);
 
 	//Player selects which game to run, STUY or LIFE.
-	int version = gameSelect();// 0 for Stuy and 1 for Life
+	version = gameSelect();// 0 for Stuy and 1 for Life
 
 	//The following code creates the CLList containing the Categories.
 	//A new ArrayList is made containing the hardcoded non-variable MASH
 	//After that, categories are added and the data set to them is input by user via CreateAL and a constant that determines which print statement to use
 	ArrayList<String> MASHAL = new ArrayList<String>();//MASH must be hardcoded
-	MASHAL.add("MANSION"); 
-	MASHAL.add("APARTMENT"); 
-	MASHAL.add("STREET"); 
-	MASHAL.add("HOUSE");
 	Categories.add("MASH");//Create the first category
-	Categories.set(0, MASHAL);//The first category added is MASH. Setting data.
 	
 	if (version == 0){// Stuy Version
 	    // Creating the ArrayList of data for each Category in CLList
+
+	    MASHAL.add("Mathematics Department"); 
+	    MASHAL.add("Art and Technology Department"); 
+	    MASHAL.add("Sciences Departments"); 
+	    MASHAL.add("Humanities Department");
+	    
 	    Categories.add("GPA"); 
 	    Categories.add("Teacher"); 
 	    Categories.add("Locker Floor"); 
@@ -82,6 +84,12 @@ public class MASH{
 	}
 	else {//Life Version
 	    // Creating the ArrayList of data for each Category in CLList
+	    	    
+	    MASHAL.add("MANSION"); 
+	    MASHAL.add("APARTMENT"); 
+	    MASHAL.add("STREET"); 
+	    MASHAL.add("HOUSE");
+
 	    Categories.add("Job");
 	    Categories.add("Retirement Age");
 	    Categories.add("Living Location");
@@ -89,27 +97,60 @@ public class MASH{
 	    Categories.add("Salary");
 	    Categories.add("Number of Kids");
 	}
-	
+	Categories.set(0, MASHAL);//The first category added is MASH. Setting data.
 	//Now that the linked list of categories is prepared... 
 	// Fill in Categories
 	for (int i = 1; i < Categories.size(); i++) {
-	    System.out.println("Fill in your choices for " + 
-			       Categories.get(i).getName());
+	    String names = Categories.get(i).getName();
+	    System.out.println("Fill in your choices for " + names); 
+
 	    
+	    boolean reqNum = names.equals ("Retirement Age")|| 
+		names.equals ("Salary")||
+		names.equals ("Number of Kids")||
+		names.equals ("GPA")||
+		names.equals ("Locker Floor")||
+		names.equals ("Lunch Period")||
+		names.equals ("Number of Frees");
+	    
+
+	    boolean reqNumLim = names.equals ("Locker Floor")||
+		names.equals ("Lunch Period")||
+		names.equals ("Number of Frees");
+
+
 	    ArrayList<String> arr = new ArrayList<String>();
 	    for (int a = 0; a < 3; a++) {
 		
 		System.out.print(a + 1 + " : ");
-		String input = reader.nextLine();
+
+
+		while (reqNum && ! reader.hasNextInt()){
+		    System.out.print("Please type an integer: ");
+		    reader.nextLine();
+		}
+		String input = reader.nextLine();		
+		int test = Integer.parseInt(input);
+		System.out.println(test + " out of bounds");
+
+
+		//FUNKY CODE
+		if (reqNumLim) { 
+		    while (test > 11 || test < 0) {
+			System.out.print("Please type an integer between 0 and 10: ");
+			reader.nextLine();
+		    }
+		}
+		input = reader.nextLine();
 		arr.add(input);
 		
 	    }
 	    Categories.set(i, arr);
 	}
-
+	
     }
 
-    public void play () throws InterruptedException{
+    public void play () throws IOException, InterruptedException{
 
 	int spun = spinner();
 
@@ -155,62 +196,22 @@ public class MASH{
 	}
 	results = results.substring(0, results.length() - 1);
 	System.out.println(results);//should be stored in text file
-
-    }
-
-    /******************************* Don't know if we need ***********************************
-    //User creates the choices that will be put into each category.
-    //The CLList will create a category with its data set to the AList returned by this method.
-    public ArrayList<String> CreateAL(int constant){//constant determines the print statement
-	final int JOB_C = 0;
-	final int RETAGE_C = 1;
-	ArrayList<String> returnAL = new ArrayList<String>();//to return
-	Scanner miniscanner = new Scanner(System.in);
-
-	for(int i=0;i<3;i++){//Three things per Array List
-	    switch(constant){//0-5 are life, 6-11 are Stuy
-	    case 0: System.out.println("Type in a new selection for Job");
-		break;
-	    case 1: System.out.println("Type in a new selection for Retirement Age");
-		break;
- 	    case 2: System.out.println("Type in a new selection for Neighborhood");
-		break;
-	    case 3: System.out.println("Type in a new selection for Pet");
-		break;
-	    case 4: System.out.println("Type in a new selection for Salary");
-		break;
-	    case 5: System.out.println("Type in a new selection for Number of Kids");
-		break;
-	    case 6: System.out.println("Type in a new selection for GPA");
-		break;
-	    case 7: System.out.println("Type in a new selection for Teacher");
-		break;
-	    case 8: System.out.println("Type in a new selection for Locker Floor");
-		break;
-	    case 9: System.out.println("Type in a new selection for Lunch Period");
-		break;
-	    case 10: System.out.println("Type in a new selection for College");
-		break;
-	    case 11: System.out.println("Type in a new selection for Number of Free periods");
-		break;
-		//Other choices here
-		
-	    default: System.out.println("Error while creating User ArrayList.");
-		break;
-	    }
-	
-	    String userinput = miniscanner.nextLine();
-	    userinput = userinput.toUpperCase();//Standardize Here
-	    returnAL.add(userinput);//Add the choice to the ArrayList
+	if (version == 0) {
+	    BufferedWriter writer = new BufferedWriter(new FileWriter("Stuy.txt", true));
+	    writer.write (results + "\n");
+	    writer.close();
 	}
-	return returnAL;
+	else {
+	    BufferedWriter writer = new BufferedWriter(new FileWriter("Life.txt", true));
+	    writer.write (results + "\n");
+	    writer.close();
+	    
+	}
     }
-    ***************** End of Potentially Removable Code **********/
-
-
     public static void main(String[] args) throws IOException, InterruptedException{
+
 	MASH game = new MASH();
-	game.game();
+	game.buildingGame();
 
 	game.play();
 	
