@@ -58,3 +58,6 @@ Andrew: Work has progressed on the Statistics end (not really). I also forked bu
 Version 0.01b [Jun 12, 2014]
 Andrew: Statistics fixes, etc.
 Jamie: Thread.sleep implementation, major improvements to MASH.java with much help from Daisy
+
+Version 0.01c [Jun 13, 2014]
+Daisy: We figured out how to create file. Now trying to limit user input. 
