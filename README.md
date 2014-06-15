@@ -2,7 +2,7 @@ pd9_the-game-of-life_JamieY-DaisyZ-AndrewF
 ==================================
 This is The Game of Life, a version of MASH prepared by Andrew Fan, Jamie Yip, and Daisy Zheng of Stuyvesant High School for your pleasure.
 
-HOW TO PLAY
+### HOW TO PLAY ###
 
 First, please compile MASH.java. When you run the program, you will be prompted with the following:
 
