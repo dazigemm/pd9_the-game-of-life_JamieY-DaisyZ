@@ -46,9 +46,8 @@ public class Statistics{
     public ArrayList<String> createAListStrFromFile(int column, File pathfile){//INCOMPLETE
 	ArrayList<String> result = new ArrayList<String>();
 	try{
-	    Scanner scan = new Scanner(pathfile);
-	    scan.useDelimiter(",");
-	    while(scan.hasNextLine()){
+	    Scanner scan = new Scanner(pathfile).useDelimiter("\\s*,\\s*");
+	    while(scan.hasNextLine()){//Apparently causes infinite loop...
 		for(int i = 0; i<column-1; i++){
 		    if(scan.hasNext()){
 			scan.next();
@@ -56,10 +55,16 @@ public class Statistics{
 			System.out.println("Scanner has reached end of line. ERROR.");
 			return null;
 		    }
-		    result.add(scan.next());//Add next one to the arraylist.
+		    String temp = scan.next();
+		    result.add(temp);//Add next one to the arraylist.
 		    scan.nextLine();//Advance scanner to next line.
 		}
+		if(!scan.hasNext()){//security b/c infinite loop 
+		    break;
+		}
 	    }
+	    //TEST CODE
+	    //System.out.println("Finished while loop");
 	}catch(FileNotFoundException e){//Most likely File not Found Error
 	    System.out.println("File Not Found. Make sure that the file: " + pathfile + " exists");
 	    return null;
@@ -71,9 +76,8 @@ public class Statistics{
     public ArrayList<Integer> createAListIntFromFile(int column, File pathfile){//INCOMPLETE
 	ArrayList<Integer> result = new ArrayList<Integer>();
 	try{
-	    Scanner scan = new Scanner(pathfile);
-	    scan.useDelimiter(",");
-	    while(scan.hasNextLine()){
+	    Scanner scan = new Scanner(pathfile).useDelimiter("\\s*,\\s*");
+	    while(scan.hasNextLine()){//Apparently causes infinite loop...
 		for(int i = 0; i<column-1; i++){
 		    if(scan.hasNext()){
 			scan.next();
@@ -81,10 +85,18 @@ public class Statistics{
 			System.out.println("Scanner has reached end of line. ERROR.");
 			return null;
 		    }
-		    result.add(Integer.parseInt(scan.next()));//Add next one to the arraylist.
+		    String temp = scan.next();
+		    result.add(Integer.parseInt(temp));//Add next one to the arraylist.
 		    scan.nextLine();//Advance scanner to next line.
 		}
+		System.out.println("Moving to next line");//Test
+		System.out.println(result);
+		if(!scan.hasNext()){//security b/c infinite loop 
+		    break;
+		}
 	    }
+	    //TEST CODE
+	    //System.out.println("Finished while loop");
 	}catch(FileNotFoundException e){//Most likely File not Found Error
 	    System.out.println("File Not Found. Make sure that the file: " + pathfile + " exists");
 	    return null;
@@ -196,12 +208,9 @@ public class Statistics{
     }
 
     public static void main(String[] args){
-	Statistics lol = new Statistics();
-	//test heap sort
-	System.out.println("Testing Heap Sort");
-	int[] nyah = {1,56,2,4,2,52,432,41,424,1,242,312,42,12,312};
-	lol.printArray(nyah);
-        lol.printStatsInt(nyah);
+	Statistics stat = new Statistics();
+	stat.getStatisticsSTUY();
+	//stat.getStatisticsLIFE();
     }
 
 }
