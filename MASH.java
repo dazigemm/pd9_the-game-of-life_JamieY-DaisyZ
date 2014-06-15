@@ -6,70 +6,73 @@ import java.io.*;
 public class MASH{
 
     //Variables
-    private int spinnernum;//Value of spinner
     private boolean finished;
     private int counter;//Main counter, adds each time <blah>
-    private int index;//Counter within ArrayLists. Resets when done.
+    private int index;//Counter for ArrayLists. Resets at new ArrayList.
     private Random rand;
     private CLList Categories;
     private int version;
+
     //Constructors
     public MASH(){
-	spinnernum = 0; //Will be changed in stuff
+	Categories  = new CLList();
+	rand = new Random();
 	finished = false;
 	counter = 1;//So does't kill first item incorrectly.
 	index = 0;
-	Categories  = new CLList();
-	rand = new Random();
-	version = 0;
+	version = 0;// Sets default game to Stuy.
     }
-
-    /***Categories
-    //Categories
-    private Category MASH;
-    //Life
-    private Category Job, RetirementAge, LivingLocation, 
-	Pet, Salary, NumKids;
-    //Stuy
-    private Category GPA, Teacher, LockerFloor, 
-	LunchPeriod, College, NumFrees;
-    ***/
 
     //********************* Methods for the game ***********************
+
+    //Spinner will randomly generate a number between 2 and 10
+    //This is to insure that the game will not pick a number that is too low. 
     public int spinner(){
-	spinnernum = rand.nextInt(8) + 2;//Arbitrary num as of right now.
-	return spinnernum;
+	return rand.nextInt(8) + 2;
     }
     
+
+    //This takes in the user input of the game. The default game is Stuy. 
     public int gameSelect(){//Stuy or Life. 
 	Scanner scan = new Scanner(System.in);
-	System.out.println("What do you want to play? Life or Stuy" );
+	System.out.println("What do you want to play? Please select between 'Life' or 'Stuy'!" 
+			   + " \n The Stuy version of the MASH is its default.");
 	String userinput = scan.nextLine();
 	
 	if (userinput.equals("LIFE") ||
 	    userinput.equals("life") ||
-	    userinput.equals("Life")) 
-	    return 1; 
-	
-	return 0; //Default value, will be 0 for STUY and 1 for LIFE
+	    userinput.equals("Life") ||
+	    userinput.equals("1")) {
+	    version = 1;
+	    System.out.println ("\nYou will be playing LIFE version!!!" );
+	} else {	
+	version = 0; //Default value, will be 0 for STUY and 1 for LIFE
+	System.out.println ("\nYou will be playing STUY version!!!" );
+	}
+
+	return version;
     }
+
+
     //Builds the structure of the game. 
-    public void buildingGame() throws IOException {//The game
+    public void buildingGame() throws IOException, InterruptedException {//The game
 
 	Scanner reader = new Scanner(System.in);
 
 	//Player selects which game to run, STUY or LIFE.
-	version = gameSelect();// 0 for Stuy and 1 for Life
+	gameSelect();// 0 for Stuy and 1 for Life
+	Thread.sleep(1000);
 
 	//The following code creates the CLList containing the Categories.
 	//A new ArrayList is made containing the hardcoded non-variable MASH
 	//After that, categories are added and the data set to them is input by user via CreateAL and a constant that determines which print statement to use
 	ArrayList<String> MASHAL = new ArrayList<String>();//MASH must be hardcoded
-	Categories.add("MASH");//Create the first category
+	Categories.add("MASH");//Create the first category, MASH, which is in both versions
 	
 	if (version == 0){// Stuy Version
 	    // Creating the ArrayList of data for each Category in CLList
 
+	    //Finishes building MASH Categories
 	    MASHAL.add("Mathematics Department"); 
 	    MASHAL.add("Art and Technology Department"); 
 	    MASHAL.add("Sciences Departments"); 
@@ -97,26 +100,48 @@ public class MASH{
 	    Categories.add("Salary");
 	    Categories.add("Number of Kids");
 	}
-	Categories.set(0, MASHAL);//The first category added is MASH. Setting data.
+
 	//Now that the linked list of categories is prepared... 
+	Categories.set(0, MASHAL);//The first category added is MASH. Setting data.
+
 	// Fill in Categories
+
+	//	/****** Basic Working Version ********
+	for (int i = 1; i < Categories.size(); i++) {
+	    System.out.println("Fill in your choices for " + 
+			       Categories.get(i).getName());
+
+	    ArrayList<String> arr = new ArrayList<String>();
+	    for (int a = 0; a < 3; a++) {
+
+		System.out.print(a + 1 + " : ");
+		String input = reader.nextLine();
+		arr.add(input);
+
+	    }
+	    Categories.set(i, arr);
+	}
+	//	****************************************/
+
+	/************More Complex Version****************
+	 //This will try to limit the user's input abilities
 	for (int i = 1; i < Categories.size(); i++) {
 	    String names = Categories.get(i).getName();
 	    System.out.println("Fill in your choices for " + names); 
 
 	    
 	    boolean reqNum = names.equals ("Retirement Age")|| 
-		names.equals ("Salary")||
-		names.equals ("Number of Kids")||
-		names.equals ("GPA")||
-		names.equals ("Locker Floor")||
-		names.equals ("Lunch Period")||
-		names.equals ("Number of Frees");
+	    	names.equals ("Salary")||
+	    	names.equals ("Number of Kids")||
+	    	names.equals ("GPA")||
+	    	names.equals ("Locker Floor")||
+	    	names.equals ("Lunch Period")||
+	    	names.equals ("Number of Frees");
 	    
 
 	    boolean reqNumLim = names.equals ("Locker Floor")||
-		names.equals ("Lunch Period")||
-		names.equals ("Number of Frees");
+	    	names.equals ("Lunch Period")||
+	    	names.equals ("Number of Frees");
 
 
 	    ArrayList<String> arr = new ArrayList<String>();
@@ -141,29 +166,34 @@ public class MASH{
 			reader.nextLine();
 		    }
 		}
-		input = reader.nextLine();
+				input = reader.nextLine();
 		arr.add(input);
 		
 	    }
 	    Categories.set(i, arr);
 	}
-	
+	***********************************************************/
     }
 
     public void play () throws IOException, InterruptedException{
 
 	int spun = spinner();
 
+	System.out.println("\n ");
 	System.out.println(Categories);
-
+	System.out.println("\n ");
 	System.out.println("Spinning...");
-
+	Thread.sleep(2000);
 	System.out.println("Spinning by " + spun);
 
 	int counter = 1;//num nodes passed
 	int node = 0;
 	int index = 0; 
 	int catSize = 0;
+
+	//As long as there are more than one option left in each category, 
+	//it will continue to go through each node and arraylist, removing the an 
+	//option that is dictated by the 'spun'. 
 
 	while (! Categories.isThereOne() ) {
 	    catSize = Categories.ALSize(node);
@@ -172,11 +202,11 @@ public class MASH{
 		index = 0;
 	    }
 	    else {
-		System.out.println ( "looking at: "+ Categories.get(node, index));
+		//System.out.println ( "looking at: "+ Categories.get(node, index));
 		if (counter % spun == 0) {
 		    String removed = Categories.remove(node, index);
 		    System.out.println( removed + " is not in your " 
-					+ Categories.get(node).getName() + " future!");
+					+ Categories.get(node).getName() + " future...");
 		    catSize = Categories.ALSize(node);
 		    index--;
 		    Thread.sleep(1000);
@@ -187,34 +217,48 @@ public class MASH{
 	    }
 	    //System.out.println(Categories);
 	}
-
+	
+	//Printing out Results......
 	System.out.println(Categories);
 
 	String results = "";
 	for (int i = 0; i < Categories.size(); i++) {
 	    results += Categories.get(i).getValue(0) + ",";
 	}
-	results = results.substring(0, results.length() - 1);
-	System.out.println(results);//should be stored in text file
+
+	System.out.println("Results: " + results);//should be stored in text file
+
+	System.out.println("\nThank you for playing!!!\n") ;
 	if (version == 0) {
 	    BufferedWriter writer = new BufferedWriter(new FileWriter("Stuy.txt", true));
 	    writer.write (results + "\n");
 	    writer.close();
+	    Thread.sleep(2000);
+	    System.out.println("If you would like to check out other player's results, \n" 
+			       + "Please open 'Stuy.txt' or compile and run 'Statistics.java'!" );
 	}
 	else {
 	    BufferedWriter writer = new BufferedWriter(new FileWriter("Life.txt", true));
 	    writer.write (results + "\n");
 	    writer.close();
-	    
+
+	    Thread.sleep(2000);
+	    System.out.println("If you would like to check out other player's results, \n" 
+			       + "Please open 'Life.txt' or compile and run 'Statistics.java'!"	);  
 	}
     }
+
+
     public static void main(String[] args) throws IOException, InterruptedException{
-
 	MASH game = new MASH();
-	game.buildingGame();
 
+	System.out.println ("WELCOME TO M.A.S.H.");
+	Thread.sleep(500);
+
+	game.buildingGame();
 	game.play();
-	
     }
+
+
 
 }
