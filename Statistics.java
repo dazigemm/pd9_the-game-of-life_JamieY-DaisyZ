@@ -129,7 +129,7 @@ public class Statistics{
     public double getMean(int[] dataM){
 	if(dataM.length==0){return -1;}
 	if(dataM.length==1){return dataM[0];}
-	int temp = 0;
+	double temp = 0;
 	for(int i = 0; i<dataM.length; i++){
 	    temp+=dataM[i];
 	}
@@ -140,7 +140,7 @@ public class Statistics{
     public double getMean(ArrayList<Integer> dataM){
 	if(dataM.size()==0){return -1;}
 	if(dataM.size()==1){return dataM.get(0);}
-	int temp = 0;
+	double temp = 0;
 	for(int i = 0; i<dataM.size(); i++){
 	    temp+=dataM.get(i);
 	}
@@ -156,11 +156,13 @@ public class Statistics{
 	if(data.length==1){return data[0];}
 	int[] tempdata = heapsort(data);
 	int datalength = tempdata.length;
+	double retval = 0;
 	if(datalength%2==1){
-	    return tempdata[(int)(datalength/2)];
+	    retval =  tempdata[(int)(datalength/2)];
 	}else{
-	    return (tempdata[(int)(datalength/2)]+tempdata[(int)(datalength/2)-1])/2;
+	    retval = (tempdata[(int)(datalength/2)]+tempdata[(int)(datalength/2)-1])/2;
 	}
+	return retval;
     }
 
     public double getMedian(ArrayList<Integer> data){//Maybe WORKING CORRECTLY
@@ -168,11 +170,13 @@ public class Statistics{
 	if(data.size()==1){return data.get(0);}
 	ArrayList<Integer> tempdata = heapsort(data);
 	int datalength = tempdata.size();
+	double retval = 0;
 	if(datalength%2==1){
-	    return tempdata.get((int)(datalength/2));
+	    retval =  tempdata.get((int)(datalength/2));
 	}else{
-	    return (tempdata.get((int)(datalength/2))+tempdata.get((int)(datalength/2)-1))/2;
+	    retval =  (tempdata.get((int)(datalength/2))+tempdata.get((int)(datalength/2)-1))/2;
 	}
+	return retval;
     }
 
     //ACCESSORY FUNCTIONS
