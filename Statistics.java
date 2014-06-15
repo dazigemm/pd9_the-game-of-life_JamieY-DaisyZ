@@ -17,17 +17,24 @@ public class Statistics{
     public void getStatisticsSTUY(){
 	System.out.println("These are the statistics for STUY.\nUnfortunately, statistical data is not available for non-integer categories");
 	File stuyfile = new File("./Stuy.txt");
+	System.out.println("GPA Data");
 	printStatsInt(createAListIntFromFile(1, stuyfile));//GPA
+	System.out.println("Locker Floor Data");
 	printStatsInt(createAListIntFromFile(3, stuyfile));//Locker Floor
+	System.out.println("Lunch Period Data");
 	printStatsInt(createAListIntFromFile(4, stuyfile));//Lunch Period
+	System.out.println("Number of Frees Data");
 	printStatsInt(createAListIntFromFile(6, stuyfile));//NumFrees
     }
     
     public void getStatisticsLIFE(){
 	System.out.println("These are the statistics for Life, the standard MASH game.\nUnfortunately, statistical data is not available for non-integer categories");
 	File lifefile = new File("./Life.txt");
+	System.out.println("Retirement Age Data");
 	printStatsInt(createAListIntFromFile(2, lifefile));//RetAge
+	System.out.println("Salary Data");
 	printStatsInt(createAListIntFromFile(5, lifefile));//Salary
+	System.out.println("Number of Kids Data");
 	printStatsInt(createAListIntFromFile(6, lifefile));//NumKids
     }
 
