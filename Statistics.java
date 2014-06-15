@@ -47,8 +47,8 @@ public class Statistics{
 	ArrayList<String> result = new ArrayList<String>();
 	try{
 	    Scanner scan = new Scanner(pathfile).useDelimiter("\\s*,\\s*");
-	    while(scan.hasNextLine()){//Apparently causes infinite loop...
-		for(int i = 0; i<column-1; i++){
+	    while(scan.hasNextLine()){
+		for(int i = 0; i<column; i++){
 		    if(scan.hasNext()){
 			scan.next();
 		    }else{
@@ -71,14 +71,14 @@ public class Statistics{
 	}
 	return result;
     }
-
+    
     //Creates an Integer ArrayList from a column of text data.
     public ArrayList<Integer> createAListIntFromFile(int column, File pathfile){//INCOMPLETE
 	ArrayList<Integer> result = new ArrayList<Integer>();
 	try{
 	    Scanner scan = new Scanner(pathfile).useDelimiter("\\s*,\\s*");
-	    while(scan.hasNextLine())
-		for(int i = 0; i<column-1; i++){
+	    while(scan.hasNextLine()){
+		for(int i = 0; i<column; i++){
 		    if(scan.hasNext()){
 			scan.next();
 		    }else{
@@ -87,16 +87,15 @@ public class Statistics{
 		    }
 		}
 		String temp = scan.next();
+		//System.out.println(temp);//TEST
 		result.add(Integer.parseInt(temp));//Add next one to the arraylist.
 		scan.nextLine();//Advance scanner to next line.
-		System.out.println("Moving to next line");//Test
-		System.out.println(result);//TEST
+		//System.out.println("Moving to next line");//Test
+		//System.out.println(result);//TEST
 		if(!scan.hasNext()){//security b/c infinite loop 
 		    break;
 		}
 	    }
-	    //TEST CODE
-	    //System.out.println("Finished while loop");
 	}catch(FileNotFoundException e){//Most likely File not Found Error
 	    System.out.println("File Not Found. Make sure that the file: " + pathfile + " exists");
 	    return null;
