@@ -67,3 +67,4 @@ Andrew: Begun statistical data obtaining from a file using Scanners and delimite
 
 Version 0.01e [June 15, 2014]
 Andrew: Statistics now runs Mean and Median on a file successfully. As for making that file... -_-
+Jamie: Tried to make the game easier to read. Working on input limitations
