@@ -64,3 +64,6 @@ Daisy: We figured out how to create file. Now trying to limit user input.
 
 Version 0.01d [June 15, 2014]
 Andrew: Begun statistical data obtaining from a file using Scanners and delimiters
+
+Version 0.01e [June 15, 2014]
+Andrew: Statistics now runs Mean and Median on a file successfully. As for making that file... -_-
