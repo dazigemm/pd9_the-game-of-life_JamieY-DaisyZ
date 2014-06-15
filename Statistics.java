@@ -110,15 +110,23 @@ public class Statistics{
     }
 
     public void printStatsInt(int[] data){
-	System.out.println("Dataset size:" + data.length);
-	System.out.println("Median:" + getMedian(data));
-	System.out.println("Mean:" + getMean(data));
+	try{
+	    System.out.println("Dataset size:" + data.length);
+	    System.out.println("Median:" + getMedian(data));
+	    System.out.println("Mean:" + getMean(data));
+	}catch(Exception e){
+	    System.out.println("Unfortunately, statistics cannot be provided.\nMake sure that both Life.txt and Stuy.txt exist and have data.");
+	}
     }
 
     public void printStatsInt(ArrayList<Integer> data){
-	System.out.println("Dataset size:" + data.size());
-	System.out.println("Median:" + getMedian(data));
-	System.out.println("Mean:" + getMean(data));
+	try{
+	    System.out.println("Dataset size:" + data.size());
+	    System.out.println("Median:" + getMedian(data));
+	    System.out.println("Mean:" + getMean(data));
+	}catch(Exception e){
+	    System.out.println("Unfortunately, statistics cannot be provided.\nMake sure that both Life.txt and Stuy.txt exist and have data.");
+	}
     }
 
     /*********************************************
@@ -217,7 +225,7 @@ public class Statistics{
     public static void main(String[] args){
 	Statistics stat = new Statistics();
 	stat.getStatisticsSTUY();
-	//stat.getStatisticsLIFE();
+	stat.getStatisticsLIFE();
     }
 
 }
