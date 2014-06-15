@@ -61,3 +61,6 @@ Jamie: Thread.sleep implementation, major improvements to MASH.java with much he
 
 Version 0.01c [Jun 13, 2014]
 Daisy: We figured out how to create file. Now trying to limit user input. 
+
+Version 0.01d [June 15, 2014]
+Andrew: Begun statistical data obtaining from a file using Scanners and delimiters

@@ -2,6 +2,7 @@
 
 //This class is meant to be instantiated ONCE and then for its methods to be called from outside.
 import java.util.*;
+import java.io.*;
 
 public class Statistics{
 
@@ -9,18 +10,52 @@ public class Statistics{
 
     }
 
+    //BELOW TWO METHODS SHOULD BE USED FOR OBTAINING STATISTICAL DATA.
+    //Results are stored in text files using BufferedWriters and Filewriters.
+    //Parsing is currently done using , DELIMITER ON SCANNER MUST BE SET TO USE THIS.
+    //Default delimiter on scanner is white space.
+    public void getStatisticsSTUY(){
+	System.out.println("These are the statistics for STUY.\nUnfortunately, statistical data is not available for non-integer categories");
+	File stuyfile = new File("./Stuy.txt");
+    }
+    
+    public void getStatisticsLIFE(){
+	System.out.println("These are the statistics for Life, the standard MASH game.\nUnfortunately, statistical data is not available for non-integer categories");
+	File lifefile = new File("./Life.txt");
+    }
+
+    //STUY: MASH (String), GPA (int), Teacher (String), Locker Floor (int), Lunch Period (int), College (String), NumFrees (int)
+    //LIFE: MASH (String), Job (String), Retirement Age (int), Living Location (String), Pet (String), Salary (int), NumKids (int)
+    //MASH can be hardcoded since there are only four choices
+
     //Creates a String ArrayList from a column of text data. 
-    public ArrayList<String> createAListStrFromFile(int column){//INCOMPLETE
-	return null;
+    public ArrayList<String> createAListStrFromFile(int column, File pathfile){//INCOMPLETE
+	try{
+	    Scanner scan = new Scanner(pathfile);
+	    scan.useDelimiter(",");
+	}catch(FileNotFoundException e){//Most likely File not Found Error
+	    System.out.println("File Not Found. Make sure that the file: " + pathfile + " exists");
+	    return null;
+	}
+	ArrayList<String> result = new ArrayList<String>();
+	return result;
     }
 
     //Creates an Integer ArrayList from a column of text data.
-    public ArrayList<Integer> createAListIntFromFile(int column){//INCOMPLETE
-	return null;
+    public ArrayList<Integer> createAListIntFromFile(int column, File pathfile){//INCOMPLETE
+	try{
+	    Scanner scan = new Scanner(pathfile);
+	    scan.useDelimiter(",");
+	}catch(FileNotFoundException e){//Most likely File not Found Error
+	    System.out.println("File Not Found. Make sure that the file: " + pathfile + " exists");
+	    return null;
+	}
+	ArrayList<Integer> result = new ArrayList<Integer>();
+	return result;
     }
 
     public void printStatsInt(int[] data){//Do this before ArrayList version
-	System.out.println("Dataset size:" + data.length());
+	System.out.println("Dataset size:" + data.length);
 	System.out.println("Median:" + getMedian(data));
 	System.out.println("Mean:" + getMean(data));
     }
