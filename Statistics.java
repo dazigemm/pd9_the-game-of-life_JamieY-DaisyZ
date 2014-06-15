@@ -30,27 +30,54 @@ public class Statistics{
 
     //Creates a String ArrayList from a column of text data. 
     public ArrayList<String> createAListStrFromFile(int column, File pathfile){//INCOMPLETE
+	ArrayList<String> result = new ArrayList<String>();
 	try{
 	    Scanner scan = new Scanner(pathfile);
 	    scan.useDelimiter(",");
+	    while(scan.hasNextLine()){
+		for(int i = 0; i<column-1; i++){
+		    if(scan.hasNext()){
+			scan.next();
+		    }else{
+			System.out.println("Scanner has reached end of line. ERROR.");
+			return null;
+		    }
+		    result.add(scan.next());//Add next one to the arraylist.
+		    scan.nextLine();//Advance scanner to next line.
+		}
+	    }
 	}catch(FileNotFoundException e){//Most likely File not Found Error
 	    System.out.println("File Not Found. Make sure that the file: " + pathfile + " exists");
 	    return null;
 	}
-	ArrayList<String> result = new ArrayList<String>();
 	return result;
     }
 
     //Creates an Integer ArrayList from a column of text data.
     public ArrayList<Integer> createAListIntFromFile(int column, File pathfile){//INCOMPLETE
+	ArrayList<Integer> result = new ArrayList<Integer>();
 	try{
 	    Scanner scan = new Scanner(pathfile);
 	    scan.useDelimiter(",");
+	    while(scan.hasNextLine()){
+		for(int i = 0; i<column-1; i++){
+		    if(scan.hasNext()){
+			scan.next();
+		    }else{
+			System.out.println("Scanner has reached end of line. ERROR.");
+			return null;
+		    }
+		    result.add(Integer.parseInt(scan.next()));//Add next one to the arraylist.
+		    scan.nextLine();//Advance scanner to next line.
+		}
+	    }
 	}catch(FileNotFoundException e){//Most likely File not Found Error
 	    System.out.println("File Not Found. Make sure that the file: " + pathfile + " exists");
 	    return null;
+	}catch(NumberFormatException e){
+	    System.out.println("Number Format Exception. Most likely, a $ , or . was inserted into a number input.");
+	    return null;
 	}
-	ArrayList<Integer> result = new ArrayList<Integer>();
 	return result;
     }
 
