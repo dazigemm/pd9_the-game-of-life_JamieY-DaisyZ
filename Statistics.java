@@ -14,6 +14,9 @@ public class Statistics{
     //Results are stored in text files using BufferedWriters and Filewriters.
     //Parsing is currently done using , DELIMITER ON SCANNER MUST BE SET TO USE THIS.
     //Default delimiter on scanner is white space.
+
+    //A TRAILING COMMA IS NECESSARY AT THE END OF EACH LINE.
+
     public void getStatisticsSTUY(){
 	System.out.println("These are the statistics for STUY.\nUnfortunately, statistical data is not available for non-integer categories");
 	File stuyfile = new File("./Stuy.txt");
@@ -111,6 +114,7 @@ public class Statistics{
 	System.out.println("Median:" + getMedian(data));
 	System.out.println("Mean:" + getMean(data));
     }
+
     public void printStatsInt(ArrayList<Integer> data){
 	System.out.println("Dataset size:" + data.size());
 	System.out.println("Median:" + getMedian(data));
@@ -155,7 +159,7 @@ public class Statistics{
 	if(datalength%2==1){
 	    return tempdata[(int)(datalength/2)];
 	}else{
-	    return tempdata[(int)(datalength/2)]+tempdata[(int)(datalength/2)-1];
+	    return (tempdata[(int)(datalength/2)]+tempdata[(int)(datalength/2)-1])/2;
 	}
     }
 
@@ -167,20 +171,20 @@ public class Statistics{
 	if(datalength%2==1){
 	    return tempdata.get((int)(datalength/2));
 	}else{
-	    return tempdata.get((int)(datalength/2))+tempdata.get((int)(datalength/2)-1);
+	    return (tempdata.get((int)(datalength/2))+tempdata.get((int)(datalength/2)-1))/2;
 	}
     }
 
     //ACCESSORY FUNCTIONS
 
     public ArrayList<Integer> heapsort(ArrayList<Integer> data){
-	ArrayList<Integer> returnArr = new ArrayList<Integer>(data.size());
+	ArrayList<Integer> returnArr = new ArrayList<Integer>();
 	ALMinHeap heapity = new ALMinHeap();
 	for(int i = 0; i<data.size(); i++){
 	    heapity.add(data.get(i));
 	}
 	for(int i = 0; i<data.size(); i++){
-	    returnArr.set(i, heapity.removeMin());
+	    returnArr.add(heapity.removeMin());
 	}
 	return returnArr;
     }
