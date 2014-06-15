@@ -55,10 +55,10 @@ public class Statistics{
 			System.out.println("Scanner has reached end of line. ERROR.");
 			return null;
 		    }
-		    String temp = scan.next();
-		    result.add(temp);//Add next one to the arraylist.
-		    scan.nextLine();//Advance scanner to next line.
 		}
+		String temp = scan.next();
+		result.add(temp);//Add next one to the arraylist.
+		scan.nextLine();//Advance scanner to next line.
 		if(!scan.hasNext()){//security b/c infinite loop 
 		    break;
 		}
@@ -77,7 +77,7 @@ public class Statistics{
 	ArrayList<Integer> result = new ArrayList<Integer>();
 	try{
 	    Scanner scan = new Scanner(pathfile).useDelimiter("\\s*,\\s*");
-	    while(scan.hasNextLine()){//Apparently causes infinite loop...
+	    while(scan.hasNextLine())
 		for(int i = 0; i<column-1; i++){
 		    if(scan.hasNext()){
 			scan.next();
@@ -85,12 +85,12 @@ public class Statistics{
 			System.out.println("Scanner has reached end of line. ERROR.");
 			return null;
 		    }
-		    String temp = scan.next();
-		    result.add(Integer.parseInt(temp));//Add next one to the arraylist.
-		    scan.nextLine();//Advance scanner to next line.
 		}
+		String temp = scan.next();
+		result.add(Integer.parseInt(temp));//Add next one to the arraylist.
+		scan.nextLine();//Advance scanner to next line.
 		System.out.println("Moving to next line");//Test
-		System.out.println(result);
+		System.out.println(result);//TEST
 		if(!scan.hasNext()){//security b/c infinite loop 
 		    break;
 		}
