@@ -17,11 +17,18 @@ public class Statistics{
     public void getStatisticsSTUY(){
 	System.out.println("These are the statistics for STUY.\nUnfortunately, statistical data is not available for non-integer categories");
 	File stuyfile = new File("./Stuy.txt");
+	printStatsInt(createAListIntFromFile(1, stuyfile));//GPA
+	printStatsInt(createAListIntFromFile(3, stuyfile));//Locker Floor
+	printStatsInt(createAListIntFromFile(4, stuyfile));//Lunch Period
+	printStatsInt(createAListIntFromFile(6, stuyfile));//NumFrees
     }
     
     public void getStatisticsLIFE(){
 	System.out.println("These are the statistics for Life, the standard MASH game.\nUnfortunately, statistical data is not available for non-integer categories");
 	File lifefile = new File("./Life.txt");
+	printStatsInt(createAListIntFromFile(2, lifefile));//RetAge
+	printStatsInt(createAListIntFromFile(5, lifefile));//Salary
+	printStatsInt(createAListIntFromFile(6, lifefile));//NumKids
     }
 
     //STUY: MASH (String), GPA (int), Teacher (String), Locker Floor (int), Lunch Period (int), College (String), NumFrees (int)
@@ -81,8 +88,13 @@ public class Statistics{
 	return result;
     }
 
-    public void printStatsInt(int[] data){//Do this before ArrayList version
+    public void printStatsInt(int[] data){
 	System.out.println("Dataset size:" + data.length);
+	System.out.println("Median:" + getMedian(data));
+	System.out.println("Mean:" + getMean(data));
+    }
+    public void printStatsInt(ArrayList<Integer> data){
+	System.out.println("Dataset size:" + data.size());
 	System.out.println("Median:" + getMedian(data));
 	System.out.println("Mean:" + getMean(data));
     }
