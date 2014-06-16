@@ -1,1 +1,2 @@
 STREET,Teacher,56,NYC,Chibi Mr. Brown,34000,4,
+STREET,Playboy,40,New York City,Felis Domestica,350000,1,

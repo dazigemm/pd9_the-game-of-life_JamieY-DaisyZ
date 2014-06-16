@@ -1,0 +1,4 @@
+Mathematics Department,89,Brown,4,5,Johns Hopkins University,3,
+Art and Technology Department,99,Brown,8,5,BMCC,2,
+Sciences Departments,88,Barbin,9,4,McGill University,1,
+Sciences Departments,77,Konstantinovich,3,5,Columbia University,5,
