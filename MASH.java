@@ -38,10 +38,8 @@ public class MASH{
 	System.out.println("What do you want to play? Please select between 'Life' or 'Stuy'!" 
 			   + " \n The Stuy version of the MASH is its default.");
 	String userinput = scan.nextLine();
-	
-	if (userinput.equals("LIFE") ||
-	    userinput.equals("life") ||
-	    userinput.equals("Life") ||
+	String caps = userinput.toUpperCase();
+	if (caps.equals("LIFE") ||
 	    userinput.equals("1")) {
 	    version = 1;
 	    System.out.println ("\nYou will be playing LIFE version!!!" );
@@ -106,7 +104,7 @@ public class MASH{
 
 	// Fill in Categories
 
-	//	/****** Basic Working Version ********
+	/****** Basic Working Version ********
 	for (int i = 1; i < Categories.size(); i++) {
 	    System.out.println("Fill in your choices for " + 
 			       Categories.get(i).getName());
@@ -121,15 +119,15 @@ public class MASH{
 	    }
 	    Categories.set(i, arr);
 	}
-	//	****************************************/
+	********End of Basic Version***************/
 
-	/************More Complex Version****************
-	 //This will try to limit the user's input abilities
+	//	/************More Complex Version****************
+	//This will try to limit the user's input abilities
 	for (int i = 1; i < Categories.size(); i++) {
 	    String names = Categories.get(i).getName();
 	    System.out.println("Fill in your choices for " + names); 
-
 	    
+	    //Figures out of the Categories will need Integers and Limitations
 	    boolean reqNum = names.equals ("Retirement Age")|| 
 	    	names.equals ("Salary")||
 	    	names.equals ("Number of Kids")||
@@ -142,37 +140,53 @@ public class MASH{
 	    boolean reqNumLim = names.equals ("Locker Floor")||
 	    	names.equals ("Lunch Period")||
 	    	names.equals ("Number of Frees");
+	    
+	    if (reqNum){
+		System.out.println("Please input an integer.");
+	    }
 
-
+	    //Adding Userinput to ArrayLists
 	    ArrayList<String> arr = new ArrayList<String>();
 	    for (int a = 0; a < 3; a++) {
 		
 		System.out.print(a + 1 + " : ");
 
-
+		//Checks for Integers
 		while (reqNum && ! reader.hasNextInt()){
 		    System.out.print("Please type an integer: ");
 		    reader.nextLine();
 		}
-		String input = reader.nextLine();		
-		int test = Integer.parseInt(input);
-		System.out.println(test + " out of bounds");
+		String tempinput = reader.nextLine();
+		String input = tempinput.toUpperCase();
 
+		//Checks for blank inputs
+		if (input.trim().equals("")){//isEmpty()){
+		    System.out.print ("Please try another option: ");
+		    input = reader.nextLine();
+		}
 
-		//FUNKY CODE
-		if (reqNumLim) { 
-		    while (test > 11 || test < 0) {
-			System.out.print("Please type an integer between 0 and 10: ");
+		//Checks for numbers between 0 and 10 if needed for Category
+		if (reqNumLim){
+		    try{
+			int testing = Integer.parseInt(input);
+			while (testing > 11 || testing < 0){
+			    System.out.print("Please pick a number between 0 and 10: ");
+			    input = reader.nextLine();
+			    testing = Integer.parseInt(input);
+			}
+		    }
+			catch(NumberFormatException e){
+			    //To ensure integer input
+			System.out.print ("Please type an integer between 0 and 10: ");
 			reader.nextLine();
 		    }
 		}
-				input = reader.nextLine();
+
 		arr.add(input);
-		
 	    }
 	    Categories.set(i, arr);
 	}
-	***********************************************************/
+	//	***************End of Complex Version***********************/
     }
 
     public void play () throws IOException, InterruptedException{
@@ -242,7 +256,7 @@ public class MASH{
 	    writer.write (results + "\n");
 	    writer.close();
 
-	    Thread.sleep(2000);
+	    Thread.sleep(1000);
 	    System.out.println("If you would like to check out other player's results, \n" 
 			       + "Please open 'Life.txt' or compile and run 'Statistics.java'!"	);  
 	}
