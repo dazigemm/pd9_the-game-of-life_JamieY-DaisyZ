@@ -1,1 +1,1 @@
-HOUSE,Teacher,100,Hudson River,Donkey,100,3,
+STREET,Teacher,56,NYC,Chibi Mr. Brown,34000,4,
