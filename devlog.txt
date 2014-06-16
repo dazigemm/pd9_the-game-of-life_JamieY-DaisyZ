@@ -73,4 +73,4 @@ Version 0.01f [June 15, 2014]
 Andrew: ReadMe now helpful, Statistics.java no longer errors when a file is missing.
 
 Version 0.01g [June 15, 2014]
-Jamie and Daisy: Squashed some bugs. 
+Jamie and Daisy: Squashed some bugs. Worked on limiting user input. Whitespace is troublesome.

@@ -160,29 +160,33 @@ public class MASH{
 		String input = tempinput.toUpperCase();
 
 		//Checks for blank inputs
-		if (input.trim().equals("")){//isEmpty()){
+		while (input.trim().equals("")){//isEmpty()){
 		    System.out.print ("Please try another option: ");
 		    input = reader.nextLine();
 		}
 
 		//Checks for numbers between 0 and 10 if needed for Category
 		if (reqNumLim){
-		    try{
-			int testing = Integer.parseInt(input);
-			while (testing > 11 || testing < 0){
-			    System.out.print("Please pick a number between 0 and 10: ");
-			    input = reader.nextLine();
+		   
+		    int testing = Integer.parseInt(input);
+		    while (testing > 10 || testing < 1){
+			System.out.print("Please pick a number between 0 and 10: ");
+			input = reader.nextLine();
+			try{
 			    testing = Integer.parseInt(input);
+		    
 			}
-		    }
 			catch(NumberFormatException e){
 			    //To ensure integer input
-			System.out.print ("Please type an integer between 0 and 10: ");
-			reader.nextLine();
+			    //System.out.print ("Please type an integer between 0 and 10: ");
+			    //input = reader.nextLine();
+			    //System.out.print("Number!!! ");
+			}
 		    }
 		}
 
 		arr.add(input);
+		
 	    }
 	    Categories.set(i, arr);
 	}
@@ -219,8 +223,8 @@ public class MASH{
 		//System.out.println ( "looking at: "+ Categories.get(node, index));
 		if (counter % spun == 0) {
 		    String removed = Categories.remove(node, index);
-		    System.out.println( removed + " is not in your " 
-					+ Categories.get(node).getName() + " future...");
+		    System.out.println( removed + " is not your future " 
+					+ Categories.get(node).getName() );
 		    catSize = Categories.ALSize(node);
 		    index--;
 		    Thread.sleep(1000);
